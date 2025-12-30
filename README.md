@@ -59,7 +59,7 @@ pip install -r requirements.txt
 
 ### 1. Prepare the Data
 
-Download the dataset [here](http://google.drive.com) and save it as:
+Download the dataset [train.parquet](https://drive.google.com/file/d/1HQHEfcSSatXf0QzeNvPiqy4lpdA8q08u/view?usp=sharing) and save it as:
 ```
 datasets/train.parquet
 ```
