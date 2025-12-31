@@ -2,7 +2,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange.svg)](https://pytorch.org/)
-
+![Feature_Distribution](./example/eda/feature_distribution.png "EDA Feature Distribution")
 This repository contains my personal solution for a private machine learning competition focused on **next-step prediction in multivariate time series** (market state sequences). The goal is to predict the next state vector in a sequence of high-dimensional, anonymized numeric features representing evolving market conditions.
 
 The solution uses a **GRU (Gated Recurrent Unit)** neural network implemented in PyTorch, trained on sliding windows of historical states. It includes full training pipeline, inference code compatible with the competition's submission format, local scoring utilities, and configuration management.
