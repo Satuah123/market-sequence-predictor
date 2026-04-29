@@ -27,12 +27,6 @@ As an MPhil Statistics candidate, I developed this framework to test the hypothe
 |------|------|---------|-------------|
 | GRU | Superior | 0.2708 | Captured nonlinear sequential variance missed by ARIMA |
 | ARIMA | 0.6620 | -0.0207 | Struggled to capture sequential nonlinear patterns |
-```
-## Key Outcomes
-- Built and trained a multi-layer GRU network in PyTorch for sequential prediction
-- Benchmarked against ARIMA baseline for model comparison
-- Achieved validation R² of 0.2708, outperforming ARIMA baseline (R² = -0.0207)
-- Implemented reproducible training workflow with configuration management
 
 ```
 
