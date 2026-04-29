@@ -1,13 +1,13 @@
-# Financial Sequence Prediction: GRU Networks vs. ARIMA Benchmarking
+# Market Sequence Prediction with GRU Networks: Deep Learning vs ARIMA Benchmarking
 ### Developed by Samuel Atuah | MPhil Statistics Candidate, University of Ghana
 
 ##  Project Overview
-This repository implements a high-performance machine learning pipeline for financial time-series forecasting. The project focuses on leveraging Gated Recurrent Units (GRU) to capture non-linear, long-term dependencies in sequential data, benchmarked against a classical ARIMA (Autoregressive Integrated Moving Average) baseline.
+This repository implements a reproducible machine learning pipeline for financial time-series forecasting. The project focuses on leveraging Gated Recurrent Units (GRU) to capture non-linear, long-term dependencies in sequential data, benchmarked against a classical ARIMA (Autoregressive Integrated Moving Average) baseline.
 
 ##  Statistical & Business Context
 As an MPhil Statistics candidate, I developed this framework to test the hypothesis that Latent Sequential Dependencies often missed by linear statistical models—can be captured via Recurrent Neural Network (RNN) architectures.
 
-### Direct Applications for XDS Data Ghana:
+### Potential Business Applications:
 - Behavioral Credit Scoring: Modeling borrower payment sequences to predict transitions between "Good" and "Delinquent" states.
 - Probability of Default (PD) Estimation: Using rolling window history to identify early-warning signals of financial distress.
 - Dynamic Risk Recalibration: Moving beyond static scorecards to real-time risk assessment based on sequential transaction patterns.
@@ -26,7 +26,16 @@ As an MPhil Statistics candidate, I developed this framework to test the hypothe
 | Model | RMSE | R² Score | Key Statistical Finding |
 | :--- | :--- | :--- | :--- |
 | GRU | Superior | 0.2708 | Captured non-linear variance that ARIMA missed entirely. |
-| ARIMA | 0.6620 | -0.0207 | Failed to model the heteroskedasticity of the sequence. |
+| ARIMA | 0.6620 | -0.0207 | ARIMA struggled to capture the sequential nonlinear patterns present in the data.|
+
+```
+## Key Outcomes
+- Built and trained a multi-layer GRU network in PyTorch for sequential prediction
+- Benchmarked against ARIMA baseline for model comparison
+- Achieved validation R² of 0.2708, outperforming ARIMA baseline (R² = -0.0207)
+- Implemented reproducible training workflow with configuration management
+
+```
 
 ##  Tech Stack & Skills
 - Deep Learning: PyTorch (Tensors, Autograd, Module subclassing)
