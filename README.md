@@ -2,37 +2,37 @@
 ### Developed by Samuel Atuah | MPhil Statistics Candidate, University of Ghana
 
 ##  Project Overview
-This repository implements a high-performance machine learning pipeline for financial time-series forecasting. The project focuses on leveraging **Gated Recurrent Units (GRU)** to capture non-linear, long-term dependencies in sequential data, benchmarked against a classical **ARIMA (Autoregressive Integrated Moving Average)** baseline.
+This repository implements a high-performance machine learning pipeline for financial time-series forecasting. The project focuses on leveraging Gated Recurrent Units (GRU) to capture non-linear, long-term dependencies in sequential data, benchmarked against a classical ARIMA (Autoregressive Integrated Moving Average) baseline.
 
 ##  Statistical & Business Context
-As an MPhil Statistics candidate, I developed this framework to test the hypothesis that **Latent Sequential Dependencies**—often missed by linear statistical models—can be captured via Recurrent Neural Network (RNN) architectures.
+As an MPhil Statistics candidate, I developed this framework to test the hypothesis that Latent Sequential Dependencies often missed by linear statistical models—can be captured via Recurrent Neural Network (RNN) architectures.
 
 ### Direct Applications for XDS Data Ghana:
-- **Behavioral Credit Scoring**: Modeling borrower payment sequences to predict transitions between "Good" and "Delinquent" states.
-- **Probability of Default (PD) Estimation**: Using rolling window history to identify early-warning signals of financial distress.
-- **Dynamic Risk Recalibration**: Moving beyond static scorecards to real-time risk assessment based on sequential transaction patterns.
+- Behavioral Credit Scoring: Modeling borrower payment sequences to predict transitions between "Good" and "Delinquent" states.
+- Probability of Default (PD) Estimation: Using rolling window history to identify early-warning signals of financial distress.
+- Dynamic Risk Recalibration: Moving beyond static scorecards to real-time risk assessment based on sequential transaction patterns.
 
 ##  Model Architecture & Methodology
 ### 1. GRU Deep Learning Model (PyTorch)
-- **Memory Retention**: Specifically chosen over standard RNNs to mitigate the **Vanishing Gradient Problem** using update and reset gates.
-- **Regularization**: Integrated **Layer Normalization** and **Dropout (0.15)** to ensure the model generalizes well to unseen financial regimes.
-- **Optimization**: Utilized **Smooth L1 Loss** (Huber Loss) for robustness against outliers, which are frequent in credit and market data.
+- Memory Retention: Specifically chosen over standard RNNs to mitigate the Vanishing Gradient Problem using update and reset gates.
+- Regularization: Integrated Layer Normalization and Dropout (0.15) to ensure the model generalizes well to unseen financial regimes.
+- Optimization: Utilized Smooth L1 Loss (Huber Loss) for robustness against outliers, which are frequent in credit and market data.
 
 ### 2. Statistical Baseline (ARIMA)
-- Provided a rigid linear benchmark to quantify the **"Non-linear Gain"** achieved by the deep learning architecture.
+- Provided a rigid linear benchmark to quantify the "Non-linear Gain" achieved by the deep learning architecture.
 
 ## Performance Metrics
 
 | Model | RMSE | R² Score | Key Statistical Finding |
 | :--- | :--- | :--- | :--- |
-| **GRU** | **Superior** | **0.2708** | Captured non-linear variance that ARIMA missed entirely. |
-| **ARIMA** | 0.6620 | -0.0207 | Failed to model the heteroskedasticity of the sequence. |
+| GRU | Superior | 0.2708 | Captured non-linear variance that ARIMA missed entirely. |
+| ARIMA | 0.6620 | -0.0207 | Failed to model the heteroskedasticity of the sequence. |
 
 ##  Tech Stack & Skills
-- **Deep Learning**: PyTorch (Tensors, Autograd, Module subclassing)
-- **Data Engineering**: Pandas, NumPy, Parquet for high-speed I/O
-- **Statistical Benchmarking**: Scikit-learn, ARIMA modeling
-- **Experiment Tracking**: Systematic hyperparameter tuning via `config.json`
+- Deep Learning: PyTorch (Tensors, Autograd, Module subclassing)
+- Data Engineering: Pandas, NumPy, Parquet for high-speed I/O
+- Statistical Benchmarking: Scikit-learn, ARIMA modeling
+- Experiment Tracking: Systematic hyperparameter tuning via `config.json`
 
 ```
 ## Repository Structure
