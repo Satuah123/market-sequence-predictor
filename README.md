@@ -18,7 +18,7 @@ Although developed on sequence market data, this workflow is transferable to:
 
 | Model | RMSE | R² Score |
 |------|------|---------|
-| GRU | 0.53 (example, use your actual) | 0.2708 |
+| GRU | 0.53  | 0.2708 |
 | ARIMA | 0.6620 | -0.0207 |
 
 ### Key Insight
