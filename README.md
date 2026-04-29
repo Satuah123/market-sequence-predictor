@@ -1,79 +1,40 @@
-# Market Sequence Prediction using GRU Networks and ARIMA Benchmarking
-## Project Overview
+# Financial Sequence Prediction: GRU Networks vs. ARIMA Benchmarking
+### Developed by Samuel Atuah | MPhil Statistics Candidate, University of Ghana
 
-This project develops a machine learning pipeline for sequence prediction using Gated Recurrent Units (GRU) and benchmarks performance against a classical ARIMA model.
+##  Project Overview
+This repository implements a high-performance machine learning pipeline for financial time-series forecasting. The project focuses on leveraging **Gated Recurrent Units (GRU)** to capture non-linear, long-term dependencies in sequential data, benchmarked against a classical **ARIMA (Autoregressive Integrated Moving Average)** baseline.
 
-The objective is to evaluate whether deep learning architectures can outperform traditional time-series approaches in capturing nonlinear sequential dependencies in structured market-style data.
+##  Statistical & Business Context
+As an MPhil Statistics candidate, I developed this framework to test the hypothesis that **Latent Sequential Dependencies**—often missed by linear statistical models—can be captured via Recurrent Neural Network (RNN) architectures.
 
-This work demonstrates practical skills in:
-- time series forecasting
-- deep learning model development
-- model benchmarking
-- reproducible ML workflows
+### Direct Applications for XDS Data Ghana:
+- **Behavioral Credit Scoring**: Modeling borrower payment sequences to predict transitions between "Good" and "Delinquent" states.
+- **Probability of Default (PD) Estimation**: Using rolling window history to identify early-warning signals of financial distress.
+- **Dynamic Risk Recalibration**: Moving beyond static scorecards to real-time risk assessment based on sequential transaction patterns.
 
----
-## Business Relevance
+##  Model Architecture & Methodology
+### 1. GRU Deep Learning Model (PyTorch)
+- **Memory Retention**: Specifically chosen over standard RNNs to mitigate the **Vanishing Gradient Problem** using update and reset gates.
+- **Regularization**: Integrated **Layer Normalization** and **Dropout (0.15)** to ensure the model generalizes well to unseen financial regimes.
+- **Optimization**: Utilized **Smooth L1 Loss** (Huber Loss) for robustness against outliers, which are frequent in credit and market data.
 
-Although trained on market sequence data, the modeling framework is transferable to real-world business problems such as:
+### 2. Statistical Baseline (ARIMA)
+- Provided a rigid linear benchmark to quantify the **"Non-linear Gain"** achieved by the deep learning architecture.
 
-- Credit scoring and default prediction
-- Customer behavior forecasting
-- Financial risk modeling
-- Fraud detection
-- Sequential transaction analysis
+## Performance Metrics
 
-This makes the project relevant for industries including:
-- Banking
-- FinTech
-- Credit bureaus
-- Risk analytics
-- Business intelligence
+| Model | RMSE | R² Score | Key Statistical Finding |
+| :--- | :--- | :--- | :--- |
+| **GRU** | **Superior** | **0.2708** | Captured non-linear variance that ARIMA missed entirely. |
+| **ARIMA** | 0.6620 | -0.0207 | Failed to model the heteroskedasticity of the sequence. |
 
----
+##  Tech Stack & Skills
+- **Deep Learning**: PyTorch (Tensors, Autograd, Module subclassing)
+- **Data Engineering**: Pandas, NumPy, Parquet for high-speed I/O
+- **Statistical Benchmarking**: Scikit-learn, ARIMA modeling
+- **Experiment Tracking**: Systematic hyperparameter tuning via `config.json`
 
-
-## Models Implemented
-
-### 1. GRU Deep Learning Model
-A multi-layer GRU architecture implemented in PyTorch featuring:
-
-- Window-based sequence learning
-- Layer normalization
-- Dropout regularization
-- Gradient clipping
-- Learning rate scheduling
-- Checkpoint saving
-
-### 2. ARIMA Baseline
-A statistical baseline model implemented for benchmarking against the GRU network.
-
-This comparison demonstrates the advantage of nonlinear sequence models over traditional autoregressive methods on complex sequential data.
-
----
-
-## Model Performance
-
-| Model | RMSE | R² Score |
-|------|------|---------|
-| GRU | Better than baseline | 0.2708 |
-| ARIMA | 0.6620 | -0.0207 |
-
-### Key Insight
-The GRU model significantly outperformed ARIMA, indicating stronger ability to model nonlinear sequential patterns.
-
----
-## Tech Stack
-
-- Python
-- PyTorch
-- Pandas
-- NumPy
-- Scikit-learn
-- Joblib
-- Jupyter Notebook
-
----
-
+```
 ## Repository Structure
 
 ```
