@@ -89,8 +89,6 @@ The project follows a structured data science workflow:
 
 ---
 
-
----
 ## Key Insights
 
 - ARIMA struggles with multivariate and nonlinear sequential patterns
