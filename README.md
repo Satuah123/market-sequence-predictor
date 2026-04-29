@@ -1,29 +1,67 @@
 # Market Sequence Prediction using GRU Networks and ARIMA Benchmarking
 ## Project Overview
-This project develops a deep learning forecasting pipeline for sequential market behavior prediction using Gated Recurrent Units (GRU), with ARIMA implemented as a classical statistical baseline.
 
-The objective is to evaluate whether deep learning architectures outperform traditional time-series methods in capturing sequential dependencies in financial-style datasets.
+This project develops a machine learning pipeline for sequence prediction using Gated Recurrent Units (GRU) and benchmarks performance against a classical ARIMA model.
 
+The objective is to evaluate whether deep learning architectures can outperform traditional time-series approaches in capturing nonlinear sequential dependencies in structured market-style data.
+
+This work demonstrates practical skills in:
+- time series forecasting
+- deep learning model development
+- model benchmarking
+- reproducible ML workflows
+
+---
 ## Business Relevance
 
-Although developed on sequence market data, this workflow is transferable to:
+Although trained on market sequence data, the modeling framework is transferable to real-world business problems such as:
 
-- Credit scoring and default risk prediction
+- Credit scoring and default prediction
 - Customer behavior forecasting
-- Fraud/anomaly detection
-- Financial risk analytics
-- Banking transaction sequence modeling
+- Financial risk modeling
+- Fraud detection
+- Sequential transaction analysis
+
+This makes the project relevant for industries including:
+- Banking
+- FinTech
+- Credit bureaus
+- Risk analytics
+- Business intelligence
+
+---
+
+
+## Models Implemented
+
+### 1. GRU Deep Learning Model
+A multi-layer GRU architecture implemented in PyTorch featuring:
+
+- Window-based sequence learning
+- Layer normalization
+- Dropout regularization
+- Gradient clipping
+- Learning rate scheduling
+- Checkpoint saving
+
+### 2. ARIMA Baseline
+A statistical baseline model implemented for benchmarking against the GRU network.
+
+This comparison demonstrates the advantage of nonlinear sequence models over traditional autoregressive methods on complex sequential data.
+
+---
 
 ## Model Performance
 
 | Model | RMSE | R² Score |
 |------|------|---------|
-| GRU | 0.53  | 0.2708 |
+| GRU | Better than baseline | 0.2708 |
 | ARIMA | 0.6620 | -0.0207 |
 
 ### Key Insight
-GRU significantly outperformed ARIMA, demonstrating stronger capacity to capture nonlinear sequential dependencies.
+The GRU model significantly outperformed ARIMA, indicating stronger ability to model nonlinear sequential patterns.
 
+---
 ## Tech Stack
 
 - Python
@@ -33,68 +71,6 @@ GRU significantly outperformed ARIMA, demonstrating stronger capacity to capture
 - Scikit-learn
 - Joblib
 - Jupyter Notebook
-
-## Skills Demonstrated
-
-- Time Series Forecasting
-- Deep Learning (GRU)
-- Statistical Benchmarking (ARIMA)
-- Model Evaluation
-- Feature Engineering
-- Reproducible ML Pipelines
-- Financial Data Modeling
----
-
-# Objective
-To investigate the predictive performance of classical vs deep learning approaches on high-dimensional sequential data and understand their limitations in real-world forecasting tasks.
----
-##  Dataset
-- Format: `.parquet`
-- Structure:
-  - `seq_ix`: sequence identifier
-  - `step_in_seq`: time step index
-  - `need_prediction`: target indicator
-  - `0–31`: multivariate feature columns (32 features total)
-
-Each sequence represents a multivariate time series instance.
-
----
-
-# Methodology
-The project follows a structured data science workflow:
-### 1. Data Preparation
-- Cleaning and structuring sequential financial data  
-- Handling missing values and inconsistencies  
-- Transforming data into a format suitable for sequence modeling
-
-### 2. Feature Engineering
-- Extracting time-dependent features  
-- Capturing trends and transitions in the data 
-### 3. Model Development
-####  ARIMA (Baseline Model)
-- Applied independently to each feature
-- Order: (5,1,0)
-- Evaluated using RMSE and R²
-####  GRU (Deep Learning Model)
-- Multi-layer GRU network
-- Captures temporal dependencies across features
-- Uses sliding window input sequences
-- Optimized using Smooth L1 Loss
----
-
-## Evaluation Metrics
-
-- Root Mean Squared Error (RMSE)
-- Coefficient of Determination (R²)
-
----
-
-## Key Insights
-
-- ARIMA struggles with multivariate and nonlinear sequential patterns
-- Performance degrades significantly across all features
-- GRU model captures hidden temporal relationships in the data
-- Deep learning significantly outperforms classical statistical methods in this setting
 
 ---
 
