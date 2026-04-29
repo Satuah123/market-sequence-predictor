@@ -7,7 +7,7 @@ This repository implements a reproducible machine learning pipeline for financia
 ##  Statistical & Business Context
 As an MPhil Statistics candidate, I developed this framework to test the hypothesis that Latent Sequential Dependencies often missed by linear statistical models—can be captured via Recurrent Neural Network (RNN) architectures.
 
-### Potential Business Applications:
+## Potential Business Applications:
 - Behavioral Credit Scoring: Modeling borrower payment sequences to predict transitions between "Good" and "Delinquent" states.
 - Probability of Default (PD) Estimation: Using rolling window history to identify early-warning signals of financial distress.
 - Dynamic Risk Recalibration: Moving beyond static scorecards to real-time risk assessment based on sequential transaction patterns.
@@ -23,11 +23,10 @@ As an MPhil Statistics candidate, I developed this framework to test the hypothe
 
 ## Performance Metrics
 
-| Model | RMSE | R² Score | Key Statistical Finding |
-| :--- | :--- | :--- | :--- |
-| GRU | Superior | 0.2708 | Captured non-linear variance that ARIMA missed entirely. |
-| ARIMA | 0.6620 | -0.0207 | ARIMA struggled to capture the sequential nonlinear patterns present in the data.|
-
+| Model | RMSE | R² Score | Key Finding |
+|------|------|---------|-------------|
+| GRU | Superior | 0.2708 | Captured nonlinear sequential variance missed by ARIMA |
+| ARIMA | 0.6620 | -0.0207 | Struggled to capture sequential nonlinear patterns |
 ```
 ## Key Outcomes
 - Built and trained a multi-layer GRU network in PyTorch for sequential prediction
