@@ -1,18 +1,26 @@
-# Financial Sequence Modeling for Risk Signal Detection
-# Project Overview
-This project focuses on modeling sequential financial data to identify patterns that can be used as early warning signals for risk-related events. In financial systems, behavior often unfolds over time, and capturing these temporal patterns is critical for making informed decisions.
+# Time Series Forecasting: ARIMA vs GRU Deep Learning Model
+## Project Overview
+This project presents a comparative study between classical statistical modeling and modern deep learning approaches for multivariate time series forecasting.
 
-The goal of this project is to demonstrate how sequence-based modeling techniques can be used to extract meaningful insights from financial data and support data-driven decision-making.
+We evaluate the performance of:
+- ARIMA (AutoRegressive Integrated Moving Average) as a statistical baseline
+- GRU (Gated Recurrent Unit) as a deep learning sequence model
+The goal is to assess how well traditional time series methods compare against neural network-based models in predicting complex sequential data.
 
 ---
 
-# Problem Statement
-Financial institutions rely on timely and accurate signals to assess risk and guide decision-making. However, many traditional models fail to fully capture the temporal dependencies present in real-world data.
+# Objective
+To investigate the predictive performance of classical vs deep learning approaches on high-dimensional sequential data and understand their limitations in real-world forecasting tasks.
+---
+##  Dataset
+- Format: `.parquet`
+- Structure:
+  - `seq_ix`: sequence identifier
+  - `step_in_seq`: time step index
+  - `need_prediction`: target indicator
+  - `0–31`: multivariate feature columns (32 features total)
 
-This project addresses this gap by:
-- Modeling sequential patterns in financial data  
-- Identifying signals that may indicate shifts in behaviour  
-- Providing a foundation for predictive risk modeling systems
+Each sequence represents a multivariate time series instance.
 
 ---
 
@@ -27,44 +35,87 @@ The project follows a structured data science workflow:
 - Extracting time-dependent features  
 - Capturing trends and transitions in the data 
 ### 3. Model Development
-- Implementing sequence-based predictive models  
-- Training the model to learn temporal dependencies in the data  
-
-## Project Overview
-- **Task**: Given a sequence of past market state vectors, predict the next state vector.
-- **Data**: Multiple independent sequences, each exactly 1000 steps long.
-  - First 100 steps are warm-up (used for context but not scored).
-  - Scoring is based on predictions for steps 100–998.
-- **Evaluation Metric**: Mean R² (coefficient of determination) across all features (higher is better).
-- **Key Constraint**: Model state must be reset between independent sequences.
-- **Approach**: Sliding-window GRU model that processes recent history to forecast the next step.
-
-Local validation achieves **~0.369 mean R²** (results may vary on hidden test set).
-
+####  ARIMA (Baseline Model)
+- Applied independently to each feature
+- Order: (5,1,0)
+- Evaluated using RMSE and R²
+####  GRU (Deep Learning Model)
+- Multi-layer GRU network
+- Captures temporal dependencies across features
+- Uses sliding window input sequences
+- Optimized using Smooth L1 Loss
 ---
 
-## Key Results
-- The model successfully captures sequential patterns in financial data  
-- Demonstrates predictive capability in identifying future states based on past behaviour  
-- Provides a framework for extending sequence modeling into risk prediction tasks  
-## Business Relevance
-Although this project is based on simulated/market data, the methodology is directly applicable to real-world financial systems such as:
-- **Credit Risk Modeling**: Identifying behavioral patterns that precede default  
-- **Fraud Detection**: Detecting unusual sequences of transactions  
-- **Customer Behavior Analysis**: Understanding financial activity over time  
-- **Decision Support Systems**: Enhancing data-driven decision-making in financial institutions
+## Evaluation Metrics
 
-This approach highlights how temporal modeling can complement traditional statistical methods in high-stakes environments like banking and credit bureaus.
+- Root Mean Squared Error (RMSE)
+- Coefficient of Determination (R²)
 
 ---
+## Results Summary
 
-## Tools & Technologies
-- Python, Jupyter Notebook
-- Data manipulation libraries  
-- Machine learning / sequence modeling techniques  
+### ARIMA Performance (Feature-wise)
+
+| Feature | RMSE | R² |
+|--------|------|----|
+| Across 32 features | ~0.50 – 1.01 | -0.73 to -0.004 |
+
+ARIMA shows consistently poor predictive performance across all features.
+---
+### GRU Performance
+
+| Model | R² Score | Observation |
+|------|----------|-------------|
+| GRU | ~0.27 – 0.37 | Captures nonlinear temporal dependencies effectively |
 
 ---
+## Key Insights
 
+- ARIMA struggles with multivariate and nonlinear sequential patterns
+- Performance degrades significantly across all features
+- GRU model captures hidden temporal relationships in the data
+- Deep learning significantly outperforms classical statistical methods in this setting
+
+---
+## Key Takeaway
+
+> Classical time series models (ARIMA) are limited in handling high-dimensional sequential data, while deep learning models like GRU provide better predictive capability by learning nonlinear temporal dependencies.
+
+---
+## Business & Industry Relevance
+
+While this project is applied to multivariate sequential data, the methodology is directly transferable to financial machine learning use cases such as:
+
+- Credit scoring systems
+- Loan default prediction
+- Customer risk profiling over time
+- Transaction behavior modeling in banking systems
+- Financial time series forecasting
+
+###  Credit Scoring Perspective
+
+In a credit scoring context, sequential customer data (e.g., repayment history, transaction behavior, and account activity over time) can be modeled as time series.
+
+This project demonstrates:
+
+-  Classical baseline modeling using ARIMA (analogous to traditional scorecard approaches)
+-  Deep learning-based sequence modeling using GRU networks (analogous to modern credit risk ML systems)
+- Model comparison framework for evaluating predictive performance
+
+### Key Insight for Financial Applications
+
+The results show that deep learning models (GRU) outperform classical statistical methods in capturing nonlinear temporal dependencies, which is critical in credit risk environments where customer behavior is dynamic and evolving.
+
+##  Tech Stack
+
+- Python
+- PyTorch
+- Pandas / NumPy
+- Scikit-learn
+- Joblib
+- Matplotlib
+
+---
 
 
 ## Repository Structure
