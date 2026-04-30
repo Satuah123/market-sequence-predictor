@@ -44,8 +44,6 @@ As an MPhil Statistics candidate, I developed this framework to test the hypothe
 ```
 ## Repository Structure
 
-```
-.
 ├── datasets/                   # Place train.parquet here (not included in repo)
 ├── examples/                   # Official baseline examples (if any)
 ├── config.json                 # Training and path configuration
